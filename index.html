@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Battleship V2+</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <h1>Battleship V2+</h1>
+    <p class="sub">Iteration 1: New vs Restart • Iteration 2: Computer fires back • Server owns truth</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="stats">
+        <div class="sectionTitle">Player</div>
+        <div><span class="label">Shots:</span> <span id="pShots">0</span></div>
+        <div><span class="label">Hits:</span> <span id="pHits">0</span></div>
+        <div><span class="label">Accuracy:</span> <span id="pAcc">0%</span></div>
+
+        <div class="sectionTitle">Computer</div>
+        <div><span class="label">Shots:</span> <span id="cShots">0</span></div>
+        <div><span class="label">Hits:</span> <span id="cHits">0</span></div>
+
+        <div class="sectionTitle">Game</div>
+        <div><span class="label">Your ship cells left:</span> <span id="pRemain">—</span></div>
+        <div><span class="label">Computer ship cells left:</span> <span id="cRemain">—</span></div>
+        <div><span class="label">Phase:</span> <span id="phase">—</span></div>
+        <div><span class="label">Winner:</span> <span id="winner">—</span></div>
+      </div>
+
+      <div class="controls">
+        <button id="restartBtn" type="button">Restart Current Game</button>
+        <button id="newBtn" type="button">New Game</button>
+      </div>
+
+      <div class="status" id="status">Loading…</div>
+
+      <div class="logWrap">
+        <h2>Turn History</h2>
+        <ul id="log" class="log"></ul>
+      </div>
+    </section>
+
+    <section class="boards">
+      <section class="boardWrap">
+        <h2 class="boardTitle">Computer Board (You fire here)</h2>
+        <div class="boardHeader">
+          <div class="corner"></div>
+          <div class="colLabels" id="colLabels1"></div>
+        </div>
+        <div class="boardBody">
+          <div class="rowLabels" id="rowLabels1"></div>
+          <div class="grid" id="gridComputer"></div>
+        </div>
+        <p class="legend">
+          <span class="chip hit"></span> Hit (red) &nbsp;&nbsp;
+          <span class="chip miss"></span> Miss (green)
+        </p>
+      </section>
+
+      <section class="boardWrap">
+        <h2 class="boardTitle">Your Board (Computer fires here)</h2>
+        <div class="boardHeader">
+          <div class="corner"></div>
+          <div class="colLabels" id="colLabels2"></div>
+        </div>
+        <div class="boardBody">
+          <div class="rowLabels" id="rowLabels2"></div>
+          <div class="grid" id="gridPlayer"></div>
+        </div>
+        <p class="legend mutedSmall">
+          Ships are hidden server-side. This board only shows where the computer hit/missed.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
