@@ -48,3 +48,36 @@ From the project folder:
 
 ```bash
 php -S localhost:8000
+
+Open:
+
+http://localhost:8000
+
+(Known Limitations)
+
+Computer targeting is random (not hunt/target).
+
+Player ship placement is server-generated (no manual placement UI).
+
+Game state resets if the PHP server session is cleared/restarted.
+
+
+---
+
+## 2) Architecture Snapshot (diagram option — if you want a quick visual)
+You can paste this into your submission doc or README as well:
+
+```txt
+[Browser / Client]
+  - UI (boards, stats, history)
+  - Sends: action=state|new|restart|fire
+  - Receives JSON and renders
+
+        HTTP (JSON)
+
+[PHP Server]
+  - Owns session state
+  - Places ships
+  - Validates & applies shots
+  - Computer fires back
+  - Enforces GAME_OVER + winner
